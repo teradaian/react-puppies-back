@@ -34,7 +34,8 @@ const createPuppy= async(req, res) => {
 
 const update = async(req, res) => {
   try{
-
+    let updatedPuppy = await Puppy.findByIdAndUpdate(req.params.id, req.body, {new: true})
+    res.send(200).json(updatedPuppy)
   } catch(err){
     console.log(err)
     res.send(500).json(err)
@@ -43,7 +44,8 @@ const update = async(req, res) => {
 
 const deletePuppy = async(req, res) => {
   try{
-
+    let deletedPuppy = await Puppy.findByIdAndDelete(req.params.id)
+    res.send(200).json(deletedPuppy)
   } catch(err){
     console.log(err)
     res.send(500).json(err)
