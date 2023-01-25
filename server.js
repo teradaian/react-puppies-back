@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url'
 import createError from 'http-errors'
 import logger from 'morgan'
 import methodOverride from 'method-override'
+import cors from 'cors'
 import('./config/database.js')
 
 // import routers
@@ -17,6 +18,7 @@ const app = express()
 app.set('view engine', 'ejs')
 
 // basic middleware
+app.use(cors())
 app.use(logger('dev'))
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
